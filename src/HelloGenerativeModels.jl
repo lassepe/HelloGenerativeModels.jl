@@ -19,6 +19,9 @@ using Zygote: Zygote
 using GLMakie: GLMakie
 
 function get_default_setup()
+    function decoder_gt(z)
+        tanh.(1.5z)
+    end
     rng = Random.MersenneTwister(1)
     training_config = (;
         optimizer=Flux.ADAM(0.001),
@@ -36,7 +39,6 @@ function get_default_setup()
 end
 
 
-include("data.jl")
 include("vae.jl")
 
 end # module HelloGenerativeModels
